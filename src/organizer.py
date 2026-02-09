@@ -32,9 +32,12 @@ def safe_print_inline(text):
 
 # ---------------------------------------------------
 # Category system
+# Default file categories used when no config.json is present.
+# Users can override these by creating their own config.json file.
 # If config.json exists, categories are loaded from it.
 # Otherwise, the default categories below are used.
 # This allows users to customize how files are sorted.
+
 # ---------------------------------------------------
 
 
@@ -106,7 +109,7 @@ def save_undo_log(moves):
         json.dump(moves, f, indent=4)
 
 # ---------------------------------------------------
-# Undo last sort by restoring files to original paths
+# undo_log.json stores original file paths so the user can restore files later.
 # ---------------------------------------------------
 
 
@@ -211,7 +214,8 @@ def organize_folder(folder_path):
     log("Sort completed")
 
 # ---------------------------------------------------
-# Interactive mode for beginners
+# Interactive mode:
+# Asks for a folder path and confirmation before sorting.
 # ---------------------------------------------------
 
 
@@ -247,6 +251,12 @@ def gui_mode():
 
 # ---------------------------------------------------
 # CLI entry point
+# Command-line interface:
+# - No arguments → interactive mode
+#  --dry <path> → preview actions
+#  --undo → restore last sort
+#  --gui → placeholder for future GUI
+#  <path> → direct mode
 # ---------------------------------------------------
 
 
