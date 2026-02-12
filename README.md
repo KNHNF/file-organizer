@@ -1,5 +1,8 @@
 # 📂 File Organizer
 
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub%20Pages-blue)
+![Repo Size](https://img.shields.io/github/repo-size/knhf/knhf.github.io)
 A lightweight and beginner‑friendly Python tool that automatically sorts files into categorized folders based on their type.  
 Perfect for cleaning up cluttered directories like Downloads, project folders, or media dumps.
 
