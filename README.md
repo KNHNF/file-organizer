@@ -1,49 +1,43 @@
-# 📂 File Organizer
+# File Organizer
 
-![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
-![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub%20Pages-blue)
-![Repo Size](https://img.shields.io/github/repo-size/knhf/knhf.github.io)
-A lightweight and beginner‑friendly Python tool that automatically sorts files into categorized folders based on their type.  
-Perfect for cleaning up cluttered directories like Downloads, project folders, or media dumps.
-
-The tool includes interactive mode, dry‑run preview, undo support, logging, config file customization, and Windows‑safe output handling.
+A lightweight Python utility that automatically sorts files into category‑based folders.  
+Useful for cleaning up cluttered directories such as Downloads, project folders, or media collections.  
+The tool supports interactive mode, dry‑run preview, undo functionality, logging, and optional category customization.
 
 ---
 
-## ✨ Features
+## Features
 
 - Automatically sorts files into category folders  
-- Interactive mode for beginners  
-- Dry‑run mode (preview actions without moving files)  
-- Undo mode (restore files to original locations)  
-- Config file support (`config.json`) for custom categories  
-- Logging to `organizer.log`  
-- Windows CMD‑safe printing (no Unicode crashes)  
+- Interactive mode for guided usage  
+- Dry‑run mode to preview actions without moving files  
+- Undo mode to restore files to their original locations  
+- Optional `config.json` for custom category definitions  
+- Logging of all file operations  
 - Simple progress bar  
-- GUI mode placeholder for future expansion  
-- Fully commented and easy to understand  
+- Clean, readable code suitable for beginners  
 
 ---
 
-## 📁 Default Categories
+## Default Categories
 
-The tool sorts files into these folders:
+Files are sorted into the following groups:
 
-- **Images** — `.jpg`, `.jpeg`, `.png`, `.gif`, `.bmp`, `.svg`  
-- **Documents** — `.pdf`, `.docx`, `.doc`, `.txt`, `.xlsx`, `.pptx`  
-- **Videos** — `.mp4`, `.mov`, `.avi`, `.mkv`  
-- **Audio** — `.mp3`, `.wav`, `.aac`, `.flac`  
-- **Archives** — `.zip`, `.rar`, `.7z`, `.tar`, `.gz`  
-- **Code** — `.py`, `.js`, `.html`, `.css`, `.java`, `.c`, `.cpp`  
-- **Misc** — anything that doesn’t match a category  
+- Images: `.jpg`, `.jpeg`, `.png`, `.gif`, `.bmp`, `.svg`  
+- Documents: `.pdf`, `.docx`, `.doc`, `.txt`, `.xlsx`, `.pptx`  
+- Videos: `.mp4`, `.mov`, `.avi`, `.mkv`  
+- Audio: `.mp3`, `.wav`, `.aac`, `.flac`  
+- Archives: `.zip`, `.rar`, `.7z`, `.tar`, `.gz`  
+- Code: `.py`, `.js`, `.html`, `.css`, `.java`, `.c`, `.cpp`  
+- Misc: any file that does not match a category  
 
-You can override these by creating a `config.json` (explained below).
+You can override these by creating a `config.json`.
 
 ---
 
-## 🚀 How to Use
+## How to Use
 
-### **1. Clone the repository**
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/<your-username>/file-organizer.git
@@ -52,25 +46,19 @@ cd file-organizer
 
 ---
 
-## **2. Run the script**
+### 2. Run the script
 
-### **Option A — Interactive Mode (recommended)**  
-
-Just run:
+#### Interactive mode (recommended)
 
 ```bash
 python src/organizer.py
 ```
 
-You will be asked:
-
-1. Enter folder path  
-2. Confirm the action  
-3. Sorting begins  
+You will be prompted for a folder path and confirmation before sorting begins.
 
 ---
 
-### **Option B — Direct Mode**
+#### Direct mode
 
 ```bash
 python src/organizer.py "C:\Users\User\Downloads"
@@ -78,41 +66,29 @@ python src/organizer.py "C:\Users\User\Downloads"
 
 ---
 
-### **Option C — Dry‑Run Mode (preview only)**
+#### Dry‑run mode (preview only)
 
 ```bash
 python src/organizer.py --dry "C:\Users\User\Downloads"
 ```
 
-This shows what *would* happen without moving any files.
+This shows what would happen without moving any files.
 
 ---
 
-### **Option D — Undo Last Sort**
-
-If something went wrong or you want to revert:
+#### Undo last sort
 
 ```bash
 python src/organizer.py --undo
 ```
 
-This restores all files using `undo_log.json`.
+This restores files using the automatically generated `undo_log.json`.
 
 ---
 
-### **Option E — GUI Mode (placeholder)**
+## Custom Categories (config.json)
 
-```bash
-python src/organizer.py --gui
-```
-
-A Tkinter GUI will be added in a future update.
-
----
-
-## ⚙️ Custom Categories (config.json)
-
-You can create a `config.json` in the project folder to override categories:
+You can define your own categories by creating a `config.json` file:
 
 ```json
 {
@@ -122,51 +98,19 @@ You can create a `config.json` in the project folder to override categories:
 }
 ```
 
-The script will automatically load this file instead of the defaults.
+If present, the script will use this file instead of the default categories.
 
 ---
 
-## 📝 Logging
+## Logging
 
-All actions (moves, restores, errors) are recorded in:
-
-```
-organizer.log
-```
-
-Logging is UTF‑8 safe and will never crash on Windows.
+All file operations are recorded in `organizer.log`.  
+This includes moves, restores, and any errors encountered during execution.
 
 ---
 
-## 🛡 Windows CMD Compatibility
+## Notes
 
-Windows CMD cannot display emojis or arrows.  
-To prevent crashes, the script uses:
-
-- `safe_print()`  
-- `safe_print_inline()`  
-- ASCII‑safe logging  
-
-This ensures the tool works on:
-
-- CMD  
-- PowerShell  
-- Windows Terminal  
-- VS Code terminal  
-- PyInstaller EXE  
-
----
-
-## 📦 Project Structure
-
-```
-file-organizer/
-│
-├── src/
-│   └── organizer.py
-│
-├── config.json        (optional)
-├── undo_log.json      (auto-generated)
-├── organizer.log      (auto-generated)
-└── README.md
-```
+- `undo_log.json` and `organizer.log` are generated automatically and should not be committed to version control.  
+- The script is designed to be simple and readable, making it suitable for beginners or as a base for further expansion.  
+- A GUI version may be added in a future update.
