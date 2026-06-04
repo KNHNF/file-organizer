@@ -1,94 +1,76 @@
 # File Organizer
 
-A lightweight Python utility that automatically sorts files into category‑based folders.  
-Useful for cleaning up cluttered directories such as Downloads, project folders, or media collections.  
-The tool supports interactive mode, dry‑run preview, undo functionality, logging, and optional category customization.
+[![Python](https://img.shields.io/badge/Python-3.8+-3572A5?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-a78bfa?style=flat-square)](LICENSE)
+
+Python CLI utility that automatically sorts files into category folders. Supports interactive mode, dry-run preview, undo, logging, and custom category configuration.
+
+Useful for cleaning up cluttered directories like Downloads, project folders, or media collections.
 
 ---
 
 ## Features
 
-- Automatically sorts files into category folders  
-- Interactive mode for guided usage  
-- Dry‑run mode to preview actions without moving files  
-- Undo mode to restore files to their original locations  
-- Optional `config.json` for custom category definitions  
-- Logging of all file operations  
-- Simple progress bar  
-- Clean, readable code suitable for beginners  
+| Feature | Description |
+|---|---|
+| Auto-sort | Moves files into category folders by extension |
+| Dry-run | Preview what would happen without moving anything |
+| Undo | Restore all files to their original locations |
+| Custom config | Override default categories with `config.json` |
+| Logging | All operations recorded in `organizer.log` |
+| Interactive mode | Guided prompts for path and confirmation |
 
 ---
 
 ## Default Categories
 
-Files are sorted into the following groups:
-
-- Images: `.jpg`, `.jpeg`, `.png`, `.gif`, `.bmp`, `.svg`  
-- Documents: `.pdf`, `.docx`, `.doc`, `.txt`, `.xlsx`, `.pptx`  
-- Videos: `.mp4`, `.mov`, `.avi`, `.mkv`  
-- Audio: `.mp3`, `.wav`, `.aac`, `.flac`  
-- Archives: `.zip`, `.rar`, `.7z`, `.tar`, `.gz`  
-- Code: `.py`, `.js`, `.html`, `.css`, `.java`, `.c`, `.cpp`  
-- Misc: any file that does not match a category  
-
-You can override these by creating a `config.json`.
+| Category | Extensions |
+|---|---|
+| Images | `.jpg` `.jpeg` `.png` `.gif` `.bmp` `.svg` |
+| Documents | `.pdf` `.docx` `.doc` `.txt` `.xlsx` `.pptx` |
+| Videos | `.mp4` `.mov` `.avi` `.mkv` |
+| Audio | `.mp3` `.wav` `.aac` `.flac` |
+| Archives | `.zip` `.rar` `.7z` `.tar` `.gz` |
+| Code | `.py` `.js` `.html` `.css` `.java` `.c` `.cpp` |
+| Misc | anything that does not match a category |
 
 ---
 
-## How to Use
+## Usage
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/<your-username>/file-organizer.git
-cd file-organizer
-```
-
----
-
-### 2. Run the script
-
-#### Interactive mode (recommended)
+**Interactive mode (recommended)**
 
 ```bash
 python src/organizer.py
 ```
 
-You will be prompted for a folder path and confirmation before sorting begins.
+Prompts for a folder path and asks for confirmation before moving anything.
 
----
-
-#### Direct mode
+**Direct mode**
 
 ```bash
 python src/organizer.py "C:\Users\User\Downloads"
 ```
 
----
-
-#### Dry‑run mode (preview only)
+**Dry-run — preview only, nothing moves**
 
 ```bash
 python src/organizer.py --dry "C:\Users\User\Downloads"
 ```
 
-This shows what would happen without moving any files.
-
----
-
-#### Undo last sort
+**Undo last sort**
 
 ```bash
 python src/organizer.py --undo
 ```
 
-This restores files using the automatically generated `undo_log.json`.
+Restores files using the auto-generated `undo_log.json`.
 
 ---
 
-## Custom Categories (config.json)
+## Custom Categories
 
-You can define your own categories by creating a `config.json` file:
+Create a `config.json` in the repo root to override defaults:
 
 ```json
 {
@@ -98,19 +80,37 @@ You can define your own categories by creating a `config.json` file:
 }
 ```
 
-If present, the script will use this file instead of the default categories.
+The script uses this file if present, otherwise falls back to built-in categories.
 
 ---
 
-## Logging
+## Setup
 
-All file operations are recorded in `organizer.log`.  
-This includes moves, restores, and any errors encountered during execution.
+```bash
+git clone https://github.com/KNHNF/file-organizer.git
+cd file-organizer
+
+python -m venv venv
+source venv/bin/activate    # macOS/Linux
+venv\Scripts\activate       # Windows
+
+pip install -r requirements.txt
+```
 
 ---
 
 ## Notes
 
-- `undo_log.json` and `organizer.log` are generated automatically and should not be committed to version control.  
-- The script is designed to be simple and readable, making it suitable for beginners or as a base for further expansion.  
-- A GUI version may be added in a future update.
+- `undo_log.json` and `organizer.log` are auto-generated and excluded from version control
+- Designed to be readable and extendable — suitable as a base for further automation work
+
+---
+
+## Author
+
+**Karan Homayounfar** · MSc Data Science, UWE Bristol
+[Portfolio](https://karan-portfolio-al7.pages.dev) · [LinkedIn](https://linkedin.com/in/karan-homayounfar) · [GitHub](https://github.com/KNHNF)
+
+## License
+
+MIT
